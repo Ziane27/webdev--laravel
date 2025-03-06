@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Students;
+use App\Models\Students as Student ;
+
+
 
 class StudentsController extends Controller
 {
   public function index()
   {
-    $students = Students::all();
+    $students = Student::all();
 
     return view('layouts.StudentView', compact('students'));
   }
@@ -25,7 +27,7 @@ class StudentsController extends Controller
       'address' => 'required'
     ]);
 
-    $addNewSTD = new Students();
+    $addNewSTD = new Student();
     $addNewSTD->name = $request->name;
     $addNewSTD->age = $request->age;
     $addNewSTD->gender = $request->gender;
@@ -44,7 +46,7 @@ class StudentsController extends Controller
       'address' => 'required'
     ]);
 
-    $student = Students::findOrFail($request->route('id'));
+    $student = Student::findOrFail($request->route('id'));
 
     $student->name = $request->name;
     $student->age = $request->age;
@@ -56,7 +58,7 @@ class StudentsController extends Controller
   }
 
   public function deleteSTD(Request $request) {
-    $student = Students::findOrFail($request->id);
+    $student = Student::findOrFail($request->id);
     $student->delete();
 
     return redirect()->route('std.viewAll')->with('success', 'Student deleted successfully!');
