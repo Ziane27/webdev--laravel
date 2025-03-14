@@ -12,6 +12,7 @@ class StudentsController extends Controller
 {
   public function index()
   {
+
     $students = Student::all();
 
     return view('layouts.StudentView', compact('students'));

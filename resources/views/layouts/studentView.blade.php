@@ -1,5 +1,5 @@
-@extends(view:'base')
-@section(section: 'title', content: 'sample webdev in laravell')
+@extends('base')
+@section(section: 'title', content: 'Student Management by Ariane')
 @section('content')
 
 <div class="container py-5">
@@ -20,11 +20,22 @@
       <h1 class="display-6 mb-1">Student Management</h1>
       <p class="text-muted mb-0">Manage your students' information</p>
     </div>
+
+    <!-- Add New Student -->
     <button type="button" class="btn btn-primary d-flex align-items-center gap-2 px-3 py-2" data-bs-toggle="modal"
       data-bs-target="#addStudentModal">
       <i class="bi bi-plus-circle"></i>
       Add New Student
     </button>
+
+    <!-- Logout Button -->
+    <form action="{{ route('auth.logout') }}" method="POST">
+      @csrf
+      <button type="submit" class="btn btn-danger d-flex align-items-center gap-2 px-3 py-2">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </button>
+    </form>
+
   </div>
 
   <!-- Table Card -->
