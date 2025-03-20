@@ -33,9 +33,9 @@ class AuthController extends Controller
         if ($authLogin && Hash::check($request->password, $authLogin->password)) {
             Auth::login($authLogin);
             Session::put('loginId', $authLogin->id);
-            return redirect()->route('std.viewAll')->with('success', 'Login successful');
+            return redirect()->route('std.viewAll')->with('success', 'Login successfully!');
         } else {
-            return back()->with('fail', 'Email or password is incorrect');
+            return back()->with('fail', 'Failed to login! Please check your credentials if they are correct');
         }
     }
 
@@ -61,7 +61,7 @@ class AuthController extends Controller
         $input['password'] = bcrypt($request->password);
         User::create($input);
 
-        return redirect()->route('auth.index')->with('success', 'Registration successful');
+        return redirect()->route('auth.index')->with('success', 'Registered successfully! Please login to continue.');
     }
 
     // Logout
@@ -69,7 +69,7 @@ class AuthController extends Controller
     {
         if (Session::has('loginId')) {
             Session::pull('loginId');
-            return redirect()->route('auth.index')->with('success', 'Logout successfully');
+            return redirect()->route('auth.index')->with('success', 'Logout successfully! ');
         } else {
             return redirect()->route('auth.index')->with('error', 'You are not logged in');
         }

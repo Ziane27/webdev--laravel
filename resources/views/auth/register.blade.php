@@ -1,28 +1,30 @@
 @extends('base')
 @section('title', 'Register')
-<div class="centered-div">
+
+@section('content')
+<div class="d-flex justify-content-center align-items-center vh-100">
     <div class="container">
-        <div class="col" style="width: 100vh;">
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 style="float: left;"><strong>Register</strong></h4>
+                        <h4 class="text-center"><strong>Register</strong></h4>
                     </div>
 
                     @if(Session("success"))
-                    <span class="alert alert-success">
+                    <span class="alert alert-success d-block text-center">
                         {{ session('success') }}
                     </span>
                     @endif
 
                     @if(Session("error"))
-                    <span class="alert alert-danger">
+                    <span class="alert alert-danger d-block text-center">
                         {{ session('error') }}
                     </span>
                     @endif
 
                     <div class="card-body">
-                        <form method="post" action="{{ route('auth.userRegister')}}">
+                        <form method="post" action="{{ route('auth.userRegister') }}">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
@@ -40,18 +42,21 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}" placeholder="Enter password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
                         </form>
 
-                        <a href="{{ route('auth.index') }}">Go back to login</a>
+                        <div class="text-center mt-3">
+                            <a href="{{ route('auth.index') }}">Go back to login</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection

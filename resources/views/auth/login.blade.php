@@ -19,11 +19,12 @@
                         <h4><strong>Login</strong></h4>
                     </div>
 
-                    @if(Session("success"))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                    @if(session('success'))
+                    <script>
+                        alert("{{ session('success') }}");
+                    </script>
                     @endif
+
 
                     @if(Session("fail"))
                     <div class="alert alert-danger">

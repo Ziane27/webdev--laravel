@@ -5,13 +5,9 @@
 <div class="container py-5">
   <!-- Success Alert -->
   @if (session('success'))
-  <div class="alert alert-success alert-dismissible fade show mb-4" role="alert" id="successAlert">
-    <div class="d-flex align-items-center">
-      <i class="bi bi-check-circle-fill me-2"></i>
-      <strong>Success!</strong>&nbsp;{{ session('success') }}
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+  <script>
+    alert("Success! {{ session('success') }}");
+  </script>
   @endif
 
   <!-- Header -->
