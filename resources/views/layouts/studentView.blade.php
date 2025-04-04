@@ -6,7 +6,7 @@
   <!-- Success Alert -->
   @if (session('success'))
   <script>
-    alert("Success! {{ session('success') }}");
+    alert("{{ session('success')}}");
   </script>
   @endif
 

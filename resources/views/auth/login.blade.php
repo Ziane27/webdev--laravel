@@ -25,12 +25,12 @@
                     </script>
                     @endif
 
-
-                    @if(Session("fail"))
-                    <div class="alert alert-danger">
-                        {{ session('fail') }}
-                    </div>
+                    @if (session('fail'))
+                    <script>
+                        alert("{{ session('fail') }}");
+                    </script>
                     @endif
+
 
                     <div class="card-body">
                         <form method="post" action="{{ route('auth.login')}}">
